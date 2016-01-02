@@ -1,0 +1,11 @@
+.map-container {
+    height: -webkit-calc(100vh - 72px);
+    height: -moz-calc(100vh - 72px);
+    height: calc(100vh - 72px);
+    background-color: rgba(90,90,190,0.8);
+}
+
+.sebm-google-map-container {
+    height: 100%;
+    position: relative;
+}

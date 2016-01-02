@@ -1,0 +1,17 @@
+<div class="map-container">
+    <sebm-google-map
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            (mapClick)="mapClicked($event)">
+
+        <sebm-google-map-marker
+                *ngFor="#m of markers"
+                (markerClick)="clickedMarker(m.label)"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]="m.label"></sebm-google-map-marker>
+    </sebm-google-map>
+    <partner-filter (filterPartners)="launchFilteredSearch($event)"></partner-filter>
+
+</div>
