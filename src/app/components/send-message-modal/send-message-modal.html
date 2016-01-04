@@ -6,11 +6,9 @@
         <h4 class="modal-title" id="myModalLabel">Send message to {{partner.username}}</h4>
       </div>
       <div class="modal-body">
-        <form>
-
-          <input type="text" #message/>
-
-        </form>
+        <div class="form-group">
+          <textarea class="form-control" rows="5" #message>Write your message here</textarea>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

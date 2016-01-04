@@ -3,7 +3,3 @@
     height: -moz-calc(100vh - 72px);
     height: calc(100vh - 72px);
 }
-
-.map-canvas {
-    background-color: rgba(90,90,190,0.8);
-}

@@ -6,6 +6,8 @@ import {InfoWindow} from '../info-window/info-window';
 import {UserModel} from '../../services/user-service/user-model';
 import {PartnerModel} from '../../services/partner-service/partner-model';
 import {PartnerService} from '../../services/partner-service/partner-service';
+import {MAP_DEFAULT_OPTIONS} from './map-default-options';
+import {Marker} from './Marker';
 
 declare var google:any;
 
@@ -21,39 +23,19 @@ declare var google:any;
 export class Map {
     gMap:any;
     selectedPartner: PartnerModel;
+    partnerResults: PartnerModel[] = [];
+    markers: Marker[] = [];
 
     constructor(element: ElementRef,
                 renderer: Renderer,
                 private _userService: UserService,
                 private _partnerService: PartnerService) {
-        var opts = {
-            center: {
-                lat: 40.4198305,
-                lng: -3.7048106
-            },
-            zoom: 10,
-            disableDefaultUI: false,
-            scrollwheel: true,
-            draggable: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.LEFT_BOTTOM,
-                style: google.maps.ZoomControlStyle.SMALL
-            },
-            panControlOptions: {
-                position: google.maps.ControlPosition.LEFT_BOTTOM
-            }
-        }
-
         renderer.setElementClass(element, 'map-canvas', true);
         const container = element.nativeElement.querySelector('.map-inner');
-        this.gMap = new google.maps.Map(container, opts);
+        this.gMap = new google.maps.Map(container, MAP_DEFAULT_OPTIONS);
     }
 
-    //partner results
-    partnerResults: PartnerModel[] = [];
 
-    markers: Marker[] = [];
 
     launchFilteredSearch(criteria:PartnerFilterCriteria){
         this.removeMarkers();
@@ -105,16 +87,6 @@ export class Map {
             opts.callback.call(self, e, opts.obj);
         });
     }
-}
-
-interface Marker {
-    map: any;
-    lat: number;
-    lng: number;
-    label?: string;
-    content?: string;
-    position?: any;
-    setMap?: (any) => void;
 }
 
 interface OnEvent {
