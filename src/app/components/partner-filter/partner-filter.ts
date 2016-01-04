@@ -18,7 +18,7 @@ declare var jQuery:any;
 export class PartnerFilter {
     public userRequestedLanguages:string[];
     public userOfferedLanguages:string[];
-    public partnerFilterCriteria:PartnerFilterCriteria = new PartnerFilterCriteria("","");
+    public partnerFilterCriteria:PartnerFilterCriteria = new PartnerFilterCriteria("Requested Language","Offered Language");
     @Output() filterPartners: EventEmitter<PartnerFilterCriteria> = new EventEmitter();
 
     constructor(private _userService:UserService) {
