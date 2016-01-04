@@ -93,7 +93,6 @@ export class Map {
             obj: gMarker,
             eventName: 'click',
             callback: function(){
-                console.log('marker clicked');
                 this.showPartner(partner);
             }
         });
