@@ -24,7 +24,6 @@ export class PartnerFilter {
     constructor(private _userService:UserService) {
         this._userService.getCurrentUser().then((result)=>
             {
-                console.log(result.requestedLanguages);
                 this.userRequestedLanguages = result.requestedLanguages;
                 this.userOfferedLanguages = result.offeredLanguages;
             }
@@ -40,12 +39,10 @@ export class PartnerFilter {
     }
 
     selectRequestedLanguage(language:string) {
-        console.log("Requested language selected: " + language);
         this.partnerFilterCriteria.partnerOfferedLanguage = language;
     }
 
     selectOfferedLanguage(language:string){
-        console.log("Offered language selected: " + language);
         this.partnerFilterCriteria.partnerRequestedLanguage = language;
     }
 

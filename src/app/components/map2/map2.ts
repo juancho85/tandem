@@ -64,10 +64,8 @@ export class Map2 {
                 lat: partner.lat,
                 lng: partner.lng,
                 label: partner.username,
-                content: this._infowindowService.getInfowindow(partner),
                 partner: partner
             }
-            console.log(gMarker);
             this.addMarker(gMarker, partner);
         });
     }
@@ -82,23 +80,15 @@ export class Map2 {
             lng: opts.lng
         };
         var gMarker = new google.maps.Marker(opts);
-        if(opts.content){
-            this._on({
-                obj: gMarker,
-                eventName: 'click',
-                callback: function(){
-                    this.showPartner(partner);
-                    //var infoWindow = new google.maps.InfoWindow({
-                    //    content: opts.content
-                    //});
-                    //infoWindow.open(this.gMap, gMarker);
-                }
-            });
-        }
+        this._on({
+            obj: gMarker,
+            eventName: 'click',
+            callback: function(){
+                this.showPartner(partner);
+            }
+        });
         this.markers.push(gMarker);
     }
-
-
 
     _on(opts:OnEvent) {
         var self = this;
