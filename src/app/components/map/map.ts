@@ -56,6 +56,7 @@ export class Map {
     markers: Marker[] = [];
 
     launchFilteredSearch(criteria:PartnerFilterCriteria){
+        this.removeMarkers();
         this._partnerService.getPartners(criteria).then((partners)=>this.partnerResults=partners);
         //TODO: handle fail
         this.partnerResults.forEach((partner)=>{
@@ -74,6 +75,14 @@ export class Map {
         this.selectedPartner = partner;
     }
 
+    resetSelectedPartner(){
+        this.selectedPartner = null;
+    }
+
+    removeMarkers(){
+        this.markers.forEach((marker)=>marker.setMap(null));
+    }
+
     addMarker(opts: Marker, partner: PartnerModel){
         opts.position = {
             lat: opts.lat,
@@ -84,6 +93,7 @@ export class Map {
             obj: gMarker,
             eventName: 'click',
             callback: function(){
+                console.log('marker clicked');
                 this.showPartner(partner);
             }
         });
@@ -96,7 +106,6 @@ export class Map {
             opts.callback.call(self, e, opts.obj);
         });
     }
-
 }
 
 interface Marker {
@@ -106,6 +115,7 @@ interface Marker {
     label?: string;
     content?: string;
     position?: any;
+    setMap?: (any) => void;
 }
 
 interface OnEvent {

@@ -42,7 +42,7 @@ export class PartnerFilter {
         this.partnerFilterCriteria.partnerOfferedLanguage = language;
     }
 
-    selectOfferedLanguage(language:string){
+    selectOfferedLanguage(language:string) {
         this.partnerFilterCriteria.partnerRequestedLanguage = language;
     }
 
