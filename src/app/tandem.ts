@@ -6,6 +6,7 @@ import {SignIn} from './components/sign-in/sign-in';
 import {UserPartners} from './components/user-partners/user-partners';
 import {Welcome} from './components/welcome/welcome';
 import {Notifications} from './components/notifications/notifications';
+import {Profile} from './components/profile/profile';
 import {SearchPartner} from './components/search-partner/search-partner';
 import {ROUTER_DIRECTIVES, RouteConfig, Route, Router} from 'angular2/router';
 
@@ -22,6 +23,7 @@ import {ROUTER_DIRECTIVES, RouteConfig, Route, Router} from 'angular2/router';
     new Route({path:'/welcome', name: 'Welcome', component: Welcome}),
     new Route({path:'/sign-in', name: 'SignIn', component: SignIn}),
     new Route({path:'/partners', name: 'UserPartners', component: UserPartners}),
+    new Route({path:'/profile/:tab', name: 'Profile', component: Profile}),
     new Route({path:'/notifications', name: 'Notifications', component: Notifications}),
     new Route({path:'/sign-up', name: 'SignUp', component: SignUp})
 ])
